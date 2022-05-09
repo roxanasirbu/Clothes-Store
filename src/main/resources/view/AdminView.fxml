@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="435.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pos.AdminController">
+    <children>
+        <TabPane layoutX="12.0" layoutY="85.0" prefHeight="336.0" prefWidth="577.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab fx:id="productTab" text="Products">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="352.0" prefWidth="577.0">
+                            <children>
+                                <TableView fx:id="productTable" layoutX="6.0" layoutY="6.0" prefHeight="243.0" prefWidth="562.0">
+                                    <columns>
+                                        <TableColumn fx:id="cname" prefWidth="139.0" text="Name" />
+                                        <TableColumn fx:id="cdesc" prefWidth="216.0" text="Descirption" />
+                                        <TableColumn fx:id="csize" prefWidth="106.0" text="Size" />
+                                        <TableColumn fx:id="cprice" prefWidth="100.0" text="Price" />
+                                    </columns>
+                                </TableView>
+                                <Button fx:id="btnAddProduct" layoutX="48.0" layoutY="268.0" mnemonicParsing="false" onAction="#AddProduct" text="Add" />
+                                <Button fx:id="editProduct" layoutX="261.0" layoutY="268.0" mnemonicParsing="false" onAction="#EditProduct" text="Edit" />
+                                <Button fx:id="deleteProduct" layoutX="475.0" layoutY="268.0" mnemonicParsing="false" onAction="#DeleteProduct" text="Delete" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="orderTab" text="Orders">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="corderTable" prefHeight="267.0" prefWidth="577.0">
+                                    <columns>
+                                        <TableColumn fx:id="cproductname" prefWidth="128.0" text="Product Name" />
+                                        <TableColumn fx:id="ccustname" prefWidth="105.0" text="Customer Name" />
+                                        <TableColumn fx:id="ccprice" prefWidth="41.0" text="Price" />
+                                        <TableColumn fx:id="caddress" prefWidth="99.0" text="Address" />
+                                        <TableColumn fx:id="cdate" prefWidth="65.0" text="Date" />
+                                        <TableColumn fx:id="cquantity" text="Quantity" />
+                                        <TableColumn fx:id="status" prefWidth="58.0" text="Status" />
+                                    </columns>
+                                </TableView>
+                                <Button fx:id="btnAcceptOrder" layoutX="220.0" layoutY="274.0" mnemonicParsing="false" onAction="#AcceptOrder" text="Accept" />
+                                <Button fx:id="btnRejectOrder" layoutX="289.0" layoutY="274.0" mnemonicParsing="false" onAction="#RejectOrder" text="Reject" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Label layoutX="14.0" layoutY="31.0" text="First Name:">
+            <font>
+                <Font name="Comic Sans MS Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="userFirstName" layoutX="90.0" layoutY="32.0" prefHeight="17.0" prefWidth="81.0" />
+        <Label layoutX="14.0" layoutY="49.0" text="Last Name:">
+            <font>
+                <Font name="Comic Sans MS Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="userLastName" layoutX="90.0" layoutY="50.0" prefHeight="17.0" prefWidth="81.0" />
+        <Label layoutX="247.0" layoutY="33.0" text="Email:">
+            <font>
+                <Font name="Comic Sans MS Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="userEmail" layoutX="310.0" layoutY="33.0" prefHeight="17.0" prefWidth="133.0" />
+        <Label layoutX="247.0" layoutY="50.0" text="Phone No:">
+            <font>
+                <Font name="Comic Sans MS Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="userPhoneNum" layoutX="310.0" layoutY="51.0" prefHeight="17.0" prefWidth="133.0" />
+        <Hyperlink fx:id="btnLogout" layoutX="511.0" layoutY="40.0" onAction="#Logout" text="Logout" />
+    </children>
+</AnchorPane>
