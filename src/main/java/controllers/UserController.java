@@ -131,6 +131,34 @@ public class UserController implements Initializable {
         main.mainWindow();
     }
 
+    void productsTable(){
+
+        productTable.setItems(null);
+        try {
+
+
+            Connection con = ConnectionUtil.conDB();
+            ResultSet rs = con.createStatement().executeQuery("select * from products");
+
+            while (rs.next()) {
+                productList.add(new Product(
+
+                        rs.getString("name"),
+                        rs.getInt("size"),
+                        rs.getDouble("price"),
+                        rs.getString("description")
+                ));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cname.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
+        cprice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
+        csize.setCellValueFactory(new PropertyValueFactory<Product, Integer>("size"));
+        cdesc.setCellValueFactory(new PropertyValueFactory<Product, String>("desc"));
+        productTable.setItems(productList);
+    }
+
 
     public void userInfo(){
         try {
