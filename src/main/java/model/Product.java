@@ -1,14 +1,14 @@
 package com.example.pos;
 
 public class Product {
-    private  int id;
+    private int id;
     private String name;
     private String desc;
     private double price;
     private int size;
 
 
-    public Product( String name, int size , double price,  String desc) {
+    public Product(String name, int size, double price, String desc) {
 
         this.name = name;
         this.desc = desc;
