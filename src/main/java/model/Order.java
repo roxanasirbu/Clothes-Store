@@ -1,4 +1,4 @@
-package com.example.pos;
+package model;
 
 import java.util.Date;
 

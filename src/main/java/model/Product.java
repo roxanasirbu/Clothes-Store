@@ -1,4 +1,4 @@
-package com.example.pos;
+package model;
 
 public class Product {
     private int id;
