@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import controllers.*;
+import manager.ConnectionUtil;
 
 public class ManageProductController {
 
