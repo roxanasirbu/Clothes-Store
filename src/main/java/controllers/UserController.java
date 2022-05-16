@@ -126,6 +126,22 @@ public class UserController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    void CancelOrder(ActionEvent event) {
+        int index = corderTable.getSelectionModel().selectedIndexProperty().get();
+        ConnectionUtil connectNow = new ConnectionUtil();
+        Connection connectDb = connectNow.conDB();
+
+        String insertFields = "update orders set status = 'Cancelled' where idorders = " + (index+1);
+
+        try{
+            Statement statement = connectDb.createStatement();
+            statement.executeUpdate(insertFields);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void Logout(ActionEvent event) {
