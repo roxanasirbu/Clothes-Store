@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//use the code from clot-14 and add code for accept and refuse an order
 
 
 public class AdminController implements Initializable {
@@ -254,7 +255,7 @@ public class AdminController implements Initializable {
         this.primaryStage = primaryStage;
         this.main = mainApplication;
     }
-
+// code for clot-29
     public void orderTable(){
         try {
 
