@@ -24,6 +24,7 @@ import manager.ConnectionUtil;
 import model.User;
 
 public class RegisterController implements Initializable {
+
     MainApplication main;
     @FXML
     private ImageView ordersImageView;
@@ -130,3 +131,4 @@ public class RegisterController implements Initializable {
 
     }
 }
+
