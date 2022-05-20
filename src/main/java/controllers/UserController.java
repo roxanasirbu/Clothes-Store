@@ -108,6 +108,7 @@ public class UserController implements Initializable {
     String lastName;
     String phonenumber;
     String email;
+
     @FXML
     void BuyProduct(ActionEvent event) {
         Object index = corderTable.getSelectionModel().getSelectedItems().get(0);
@@ -126,22 +127,7 @@ public class UserController implements Initializable {
             e.printStackTrace();
         }
     }
-    @FXML
-    void CancelOrder(ActionEvent event) {
-        int index = corderTable.getSelectionModel().selectedIndexProperty().get();
-        ConnectionUtil connectNow = new ConnectionUtil();
-        Connection connectDb = connectNow.conDB();
 
-        String insertFields = "update orders set status = 'Cancelled' where idorders = " + (index+1);
-
-        try{
-            Statement statement = connectDb.createStatement();
-            statement.executeUpdate(insertFields);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     void Logout(ActionEvent event) {
@@ -179,33 +165,7 @@ public class UserController implements Initializable {
 
     }
 
-    void productsTable(){
 
-        productTable.setItems(null);
-        try {
-
-
-            Connection con = ConnectionUtil.conDB();
-            ResultSet rs = con.createStatement().executeQuery("select * from products");
-
-            while (rs.next()) {
-                productList.add(new Product(
-
-                        rs.getString("name"),
-                        rs.getInt("size"),
-                        rs.getDouble("price"),
-                        rs.getString("description")
-                ));
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        cname.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
-        cprice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
-        csize.setCellValueFactory(new PropertyValueFactory<Product, Integer>("size"));
-        cdesc.setCellValueFactory(new PropertyValueFactory<Product, String>("desc"));
-        productTable.setItems(productList);
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
