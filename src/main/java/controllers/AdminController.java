@@ -1,6 +1,5 @@
 package controllers;
-
-
+import app.MainApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +11,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import manager.ConnectionUtil;
+import model.Order;
+import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,12 +22,8 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import app.MainApplication;
-import manager.ConnectionUtil;
-import model.Order;
-import model.Product;
-import model.User;
-import controllers.UserController;
+
+
 
 public class AdminController implements Initializable {
 
@@ -134,7 +132,6 @@ public class AdminController implements Initializable {
 
 
 
-
     @FXML
     void AcceptOrder(ActionEvent event) {
         ConnectionUtil connectNow = new ConnectionUtil();
@@ -153,11 +150,10 @@ public class AdminController implements Initializable {
             e.printStackTrace();
         }
     }
-
     @FXML
     void AddProduct(ActionEvent event) {
         try {
-            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("AddProductView.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("AddProductView.fxml"));
             AnchorPane pane;
             pane = loader.load();
             ManageProductController controller = loader.getController();
@@ -169,29 +165,24 @@ public class AdminController implements Initializable {
             e.printStackTrace();
         }
     }
-    @FXML
-    void Logout(ActionEvent event) {
-        main.mainWindow();
-    }
+
     @FXML
     void DeleteProduct(ActionEvent event) {
         ConnectionUtil connectNow = new ConnectionUtil();
-        Connection connectDb = connectNow.conDB();
+        Connection connectDb = ConnectionUtil.conDB();
         int index = productTable.getSelectionModel().selectedIndexProperty().get();
 
-        String insertFields = "DELETE FROM products WHERE idproducts = '" + (index+1)+"'";
+        String insertFields = "DELETE FROM products WHERE idproducts = '" + (index + 1) + "'";
 
-        try{
+        try {
             Statement statement = connectDb.createStatement();
             statement.executeUpdate(insertFields);
             productTable.refresh();
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     @FXML
     void EditProduct(ActionEvent event) {
         int index = productTable.getSelectionModel().selectedIndexProperty().get();
@@ -331,5 +322,5 @@ public class AdminController implements Initializable {
         orderTable();
         userInfo();
     }
-}
 
+}
