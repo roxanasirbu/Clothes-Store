@@ -132,24 +132,6 @@ public class AdminController implements Initializable {
 
 
 
-    @FXML
-    void AcceptOrder(ActionEvent event) {
-        ConnectionUtil connectNow = new ConnectionUtil();
-        Connection connectDb = connectNow.conDB();
-        int index = corderTable.getSelectionModel().selectedIndexProperty().get();
-
-        String insertFields = "update orders set status = 'Accepted' where idorders = " + (index+1);
-
-        try{
-            Statement statement = connectDb.createStatement();
-            statement.executeUpdate(insertFields);
-            corderTable.refresh();
-
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     void AddProduct(ActionEvent event) {
@@ -207,23 +189,7 @@ public class AdminController implements Initializable {
     }
 
 
-    @FXML
-    void RejectOrder(ActionEvent event) {
-        ConnectionUtil connectNow = new ConnectionUtil();
-        Connection connectDb = connectNow.conDB();
-        int index = corderTable.getSelectionModel().selectedIndexProperty().get();
 
-        String insertFields = "update orders set status = 'Rejected' where idorders = " + (index+1);
-
-        try{
-            Statement statement = connectDb.createStatement();
-            statement.executeUpdate(insertFields);
-            corderTable.refresh();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     void Cancel(ActionEvent event) {
@@ -261,38 +227,7 @@ public class AdminController implements Initializable {
         this.main = mainApplication;
     }
 
-    public void orderTable(){
-        try {
 
-
-            Connection con = ConnectionUtil.conDB();
-            ResultSet rs = con.createStatement().executeQuery("select * from orders");
-
-            while (rs.next()) {
-                orderList.add(new Order(
-
-                        rs.getString("Cname"),
-                        rs.getInt("quantity"),
-                        rs.getDouble("price"),
-                        rs.getString("address"),
-                        rs.getDate("date"),
-                        rs.getString("status"),
-                        rs.getString("productname")
-
-                ));
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ccustname.setCellValueFactory(new PropertyValueFactory<Order, String>("Cname"));
-        ccprice.setCellValueFactory(new PropertyValueFactory<Order, Double>("price"));
-        cquantity.setCellValueFactory(new PropertyValueFactory<Order, Integer>("quantity"));
-        caddress.setCellValueFactory(new PropertyValueFactory<Order, String>("address"));
-        cdate.setCellValueFactory(new PropertyValueFactory<Order, LocalDate>("date"));
-        status.setCellValueFactory(new PropertyValueFactory<Order, String>("status"));
-        cproductname.setCellValueFactory(new PropertyValueFactory<Order, String>("productname"));
-        corderTable.setItems(orderList);
-    }
 
     void productsTable(){
 
@@ -325,7 +260,7 @@ public class AdminController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         productsTable();
-        orderTable();
+
         userInfo();
     }
 }
