@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane prefHeight="371.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+    <children>
+        <Button id="loginbtn" fx:id="loginbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="437.0" layoutY="186.0" mnemonicParsing="false" onAction="#Login" prefHeight="25.0" prefWidth="63.0" text="Sign In" textAlignment="CENTER" />
+        <Label layoutX="455.0" layoutY="68.0" prefHeight="18.0" prefWidth="63.0" text="Username">
+            <font>
+                <Font name="Comic Sans MS Bold" size="12.0" />
+            </font>
+        </Label>
+        <TextField id="txtusername" fx:id="txtusername" layoutX="366.0" layoutY="86.0" prefHeight="25.0" prefWidth="178.0" promptText="Enter Username" />
+        <Label layoutX="452.0" layoutY="111.0" prefHeight="18.0" prefWidth="69.0" text="Password">
+            <font>
+                <Font name="Comic Sans MS Bold" size="12.0" />
+            </font>
+        </Label>
+        <PasswordField id="txtpassword" fx:id="txtpassword" accessibleRole="PASSWORD_FIELD" layoutX="366.0" layoutY="129.0" prefHeight="25.0" prefWidth="178.0" promptText="Enter Password" />
+        <Label id="signupLabel" layoutX="376.0" layoutY="227.0" text="Not Registered? " />
+        <Hyperlink fx:id="registerHyp" layoutX="500.0" layoutY="224.0" onAction="#GoToRegister" text="SignUp" />
+        <ImageView fx:id="orderImageView" fitHeight="371.0" fitWidth="240.0" pickOnBounds="true" smooth="false">
+            <image>
+                <Image url="@../image/logo.jpg" />
+            </image>
+        </ImageView>
+        <Label fx:id="errorLabel" layoutX="227.0" layoutY="161.0" prefHeight="17.0" prefWidth="149.0" />
+    </children>
+</AnchorPane>
