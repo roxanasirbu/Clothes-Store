@@ -10,67 +10,9 @@ import controllers.RegisterController;
 import controllers.AdminController;
 import controllers.UserController;
 
-public class MainApplication extends Application {
 
-    Stage primaryStage;
-    Stage secondStage;
-    static String username;
-    String a;
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        this.primaryStage=primaryStage;
-        mainWindow();
-
-    }
-
-    public void mainWindow() {
-        try {
-            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("SignIn.fxml"));
-            AnchorPane pane;
-            pane = loader.load();
-            LoginController controller = loader.getController();
-            controller.setmain(this,primaryStage);
-            Scene scene = new Scene(pane);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void registerWindow() {
-        try {
-            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("SignUp.fxml"));
-            AnchorPane pane;
-            pane = loader.load();
-            RegisterController controller = loader.getController();
-            controller.setmain(this,primaryStage);
-            Scene scene = new Scene(pane);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-    public void setUsername(String username)
-    {
-        this.username = username;
-    }
-    public  static String  getUsername(){
-        return username;
-    }
-
-
-
-
-
-
-    public static void main(String[] args) {
-        launch(args);
-    }
+public class MainApplication {
 
 }
+
+

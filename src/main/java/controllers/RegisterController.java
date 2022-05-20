@@ -1,11 +1,11 @@
 package controllers;
-
-
+import app.MainApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
@@ -13,9 +13,6 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.stage.Window;
 import javafx.scene.image.Image;
-import app.MainApplication;
-import manager.ConnectionUtil;
-import model.*;
 
 
 import java.io.File;
@@ -23,8 +20,11 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import manager.ConnectionUtil;
+import model.User;
 
 public class RegisterController implements Initializable {
+
     MainApplication main;
     @FXML
     private ImageView ordersImageView;
@@ -125,11 +125,9 @@ public class RegisterController implements Initializable {
         ObservableList<String> list = FXCollections.observableArrayList("Seller",
                 "Customer");
         rolebox.setItems(list);
-        File ordersFile = new File("image/logo.jpeg");
+        File ordersFile = new File("image/logo.jpg");
         Image ordersImage= new Image(ordersFile.toURI().toString());
         ordersImageView.setImage(ordersImage);
 
-
     }
-}
 }
