@@ -71,3 +71,4 @@
         <ComboBox fx:id="rolebox" layoutX="317.0" layoutY="345.0" onAction="#SelectRole" prefHeight="25.0" prefWidth="267.0" promptText="Select Role" />
     </children>
 </AnchorPane>
+
