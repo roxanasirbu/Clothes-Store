@@ -1,4 +1,4 @@
-package controllers;
+package com.example.pos;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,11 +26,10 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import app.MainApplication;
-import model.*;
-import manager.ConnectionUtil;
 
-public class UserController implements Initializable {
+public class UserController  {
+
 
 
 }
+
