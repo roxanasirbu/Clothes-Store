@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.collections.FXCollections;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -108,10 +109,9 @@ public class UserController implements Initializable {
     String lastName;
     String phonenumber;
     String email;
-
     @FXML
     void BuyProduct(ActionEvent event) {
-        Object index = corderTable.getSelectionModel().getSelectedItems().get(0);
+        // Object index = corderTable.getSelectionModel().getSelectedItems().get(0);
 
         try {
             FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("AddOrderView.fxml"));
@@ -128,6 +128,22 @@ public class UserController implements Initializable {
         }
     }
 
+    @FXML
+    void CancelOrder(ActionEvent event) {
+        int index = corderTable.getSelectionModel().selectedIndexProperty().get();
+        ConnectionUtil connectNow = new ConnectionUtil();
+        Connection connectDb = connectNow.conDB();
+
+        String insertFields = "update orders set status = 'Cancelled' where idorders = " + (index+1);
+
+        try{
+            Statement statement = connectDb.createStatement();
+            statement.executeUpdate(insertFields);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void Logout(ActionEvent event) {
@@ -179,5 +195,3 @@ public class UserController implements Initializable {
         this.main =mainApplication;
     }
 }
-
-
