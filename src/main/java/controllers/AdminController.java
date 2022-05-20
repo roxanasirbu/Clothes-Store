@@ -27,7 +27,7 @@ import model.Product;
 import model.User;
 import controllers.UserController;
 
-public class 333AdminController implements Initializable {
+public class AdminController implements Initializable {
 
     MainApplication main;
     Stage primaryStage;
