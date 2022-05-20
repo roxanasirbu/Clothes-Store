@@ -1,5 +1,6 @@
 package controllers;
-import app.MainApplication;
+
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,14 +15,16 @@ import javafx.fxml.FXML;
 import javafx.stage.Window;
 import javafx.scene.image.Image;
 
+import app.MainApplication;
+import manager.ConnectionUtil;
+import model.*;
+
 
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-import manager.ConnectionUtil;
-import model.User;
 
 public class RegisterController implements Initializable {
 
