@@ -60,7 +60,7 @@ public class LoginController implements Initializable {
         String userName = txtusername.getText().toString();
         String pass = txtpassword.getText().toString();
 
-        //
+       
         String sql = "SELECT * FROM users Where username = ? and password = ?";
         try {
             preparedStatement = con.prepareStatement(sql);
