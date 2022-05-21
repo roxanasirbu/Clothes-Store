@@ -153,17 +153,28 @@ public class AdminController implements Initializable {
 
     @FXML
     void AddProduct(ActionEvent event) {
+        int index = productTable.getSelectionModel().selectedIndexProperty().get();
+        System.out.println("inddex in add product: "+ index);
+
         try {
+
             FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("AddProductView.fxml"));
             AnchorPane pane;
             pane = loader.load();
             ManageProductController controller = loader.getController();
+            controller.setmain(this,index);
             Scene scene = new Scene(pane);
             secondaryStage.setScene(scene);
             secondaryStage.show();
 
+
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        finally {
+            System.out.println("In the finally block");
+            productsTable();
         }
     }
     @FXML
@@ -176,18 +187,24 @@ public class AdminController implements Initializable {
         ConnectionUtil connectNow = new ConnectionUtil();
         Connection connectDb = connectNow.conDB();
         int index = productTable.getSelectionModel().selectedIndexProperty().get();
+        System.out.println("IN the delete product index: ."+ (index+1));
 
         String insertFields = "DELETE FROM products WHERE idproducts = '" + (index+1)+"'";
+
+
 
         try{
             Statement statement = connectDb.createStatement();
             statement.executeUpdate(insertFields);
-            productTable.refresh();
+
 
         }
         catch (Exception e){
             e.printStackTrace();
         }
+
+        // productTable.getItems().clear();
+        productsTable();
     }
 
     @FXML
@@ -198,13 +215,19 @@ public class AdminController implements Initializable {
             AnchorPane pane;
             pane = loader.load();
             ManageProductController controller = loader.getController();
-            Scene scene = new Scene(pane);
             controller.setmain(this,index);
+            Scene scene = new Scene(pane);
+
             secondaryStage.setScene(scene);
             secondaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        finally {
+            productsTable();
+        }
+
     }
 
 
@@ -297,10 +320,8 @@ public class AdminController implements Initializable {
 
     void productsTable(){
 
-        productTable.setItems(null);
+        productTable.getItems().clear();
         try {
-
-
             Connection con = ConnectionUtil.conDB();
             ResultSet rs = con.createStatement().executeQuery("select * from products");
 
@@ -316,10 +337,13 @@ public class AdminController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
         cname.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         cprice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
         csize.setCellValueFactory(new PropertyValueFactory<Product, Integer>("size"));
         cdesc.setCellValueFactory(new PropertyValueFactory<Product, String>("desc"));
+
         productTable.setItems(productList);
     }
     @Override

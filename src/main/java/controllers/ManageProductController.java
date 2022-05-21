@@ -72,11 +72,12 @@ public class ManageProductController {
             connectDb.close();
             ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
 
-            adminController.productsTable();
 
         }catch(Exception e){
             System.err.print( e.getClass().getName() + ": " + e.getMessage());
         }
+
+        adminController.productsTable();
     }
     @FXML
     void SaveProduct(ActionEvent event) {
@@ -96,11 +97,15 @@ public class ManageProductController {
             Statement statement = connectDb.createStatement();
             statement.executeUpdate(insertToRegister);
             ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-            adminController.productsTable();
+            // adminController.productsTable();
         }
         catch (Exception e){
             e.printStackTrace();
         }
+
+        System.out.println("In the save product");
+
+        adminController.productsTable();
     }
 
 
