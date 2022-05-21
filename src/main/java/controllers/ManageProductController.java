@@ -58,10 +58,10 @@ public class ManageProductController {
     @FXML
     void UpdateProduct(ActionEvent event) {
 
-        try{
+        try {
             ConnectionUtil connectNow = new ConnectionUtil();
             Connection connectDb = connectNow.conDB();
-            PreparedStatement stmt = connectDb.prepareStatement("UPDATE products SET name = ? , size = ? , price = ? , description = ?  Where idproducts = '" +(index+1)+"'");
+            PreparedStatement stmt = connectDb.prepareStatement("UPDATE products SET name = ? , size = ? , price = ? , description = ?  Where idproducts = '" + (index + 1) + "'");
             stmt.setString(1, txtUpdateProductName.getText());
             stmt.setString(2, txtUpdateProductPrice.getText());
             stmt.setString(3, txtUpdateProductSize.getText());
@@ -70,13 +70,13 @@ public class ManageProductController {
             stmt.executeUpdate();
             stmt.close();
             connectDb.close();
-            ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+            ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
 
-            adminController.productsTable();
 
-        }catch(Exception e){
-            System.err.print( e.getClass().getName() + ": " + e.getMessage());
+        } catch (Exception e) {
+            System.err.print(e.getClass().getName() + ": " + e.getMessage());
         }
+        adminController.productsTable();
     }
     @FXML
     void SaveProduct(ActionEvent event) {
@@ -96,11 +96,14 @@ public class ManageProductController {
             Statement statement = connectDb.createStatement();
             statement.executeUpdate(insertToRegister);
             ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-            adminController.productsTable();
+            //adminController.productsTable();
         }
         catch (Exception e){
             e.printStackTrace();
         }
+        System.out.println("In the save product");
+
+        adminController.productsTable();
     }
 
 

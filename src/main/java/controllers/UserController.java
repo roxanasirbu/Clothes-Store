@@ -100,6 +100,7 @@ public class UserController implements Initializable {
         try {
 
 
+            corderTable.getItems().clear();
             Connection con = ConnectionUtil.conDB();
             ResultSet rs = con.createStatement().executeQuery("select * from orders");
 
