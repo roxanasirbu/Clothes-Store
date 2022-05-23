@@ -179,47 +179,6 @@ public class UserController implements Initializable {
 
     }
 
-    void productsTable(){
-
-        productTable.setItems(null);
-        try {
-
-
-            Connection con = ConnectionUtil.conDB();
-            ResultSet rs = con.createStatement().executeQuery("select * from products");
-
-            while (rs.next()) {
-                productList.add(new Product(
-
-                        rs.getString("name"),
-                        rs.getInt("size"),
-                        rs.getDouble("price"),
-                        rs.getString("description")
-                ));
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        cname.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
-        cprice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
-        csize.setCellValueFactory(new PropertyValueFactory<Product, Integer>("size"));
-        cdesc.setCellValueFactory(new PropertyValueFactory<Product, String>("desc"));
-        productTable.setItems(productList);
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        productsTable();
-        orderTable();
-        userInfo();
-    }
-
-    public void setmain(MainApplication mainApplication, Stage primaryStage, String username) {
-        this.username = username;
-        this.main =mainApplication;
-    }
-}
-
 
 //used for CLOT32 (from CLOT30) - see the products list
     void productsTable(){
