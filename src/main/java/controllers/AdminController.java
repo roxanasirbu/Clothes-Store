@@ -157,7 +157,7 @@ public class AdminController implements Initializable {
 
         try {
 
-            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("AddProductView.fxml"));
+            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("/view/AddProductView.fxml"));
             AnchorPane pane;
             pane = loader.load();
             ManageProductController controller = loader.getController();
@@ -206,11 +206,11 @@ public class AdminController implements Initializable {
         productsTable();
 
     }
-    @FXML
+    @FXML 
     void EditProduct(ActionEvent event) {
         int index = productTable.getSelectionModel().selectedIndexProperty().get();
         try {
-            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("UpdateProductView.fxml"));
+            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("/viex/UpdateProductView.fxml"));
             AnchorPane pane;
             pane = loader.load();
             ManageProductController controller = loader.getController();
