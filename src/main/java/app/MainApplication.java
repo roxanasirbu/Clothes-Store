@@ -29,7 +29,7 @@ public class MainApplication extends Application {
 
     public void mainWindow() {
         try {
-            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("SignIn.fxml"));
+            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("/view/SignIn.fxml"));
             AnchorPane pane;
             pane = loader.load();
             LoginController controller = loader.getController();
@@ -44,7 +44,7 @@ public class MainApplication extends Application {
 
     public void registerWindow() {
         try {
-            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("SignUp.fxml"));
+            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("/view/SignUp.fxml"));
             AnchorPane pane;
             pane = loader.load();
             RegisterController controller = loader.getController();
@@ -58,7 +58,7 @@ public class MainApplication extends Application {
     }
     public void adminWindow() {
         try {
-            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("AdminView.fxml"));
+            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("/view/AdminView.fxml"));
             AnchorPane pane;
             pane = loader.load();
             AdminController controller = loader.getController();
@@ -72,7 +72,7 @@ public class MainApplication extends Application {
     }
     public void userWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("UserView.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("/view/UserView.fxml"));
             AnchorPane pane;
             pane = loader.load();
             UserController controller = loader.getController();
