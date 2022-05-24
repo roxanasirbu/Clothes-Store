@@ -58,7 +58,7 @@ public class OrderController {
         String address = txtAddress.getText();
         String Cname;
         String insertFields = "INSERT INTO orders(cname,quantity,price,address,date,status,productname) VALUES ('";
-        String insertValues = "Nadir"+"','"+quantity +"','"+ price +"','" + address+"','" + "2022-04-19"+"','" +"Pending"+"','" +productname+"')";
+        String insertValues = "client"+"','"+quantity +"','"+ price +"','" + address+"','" + "2022-04-19"+"','" +"Pending"+"','" +productname+"')";
         String insertToRegister = insertFields + insertValues;
 
         try{
