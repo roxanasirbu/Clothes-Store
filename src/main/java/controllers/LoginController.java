@@ -113,8 +113,11 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        File orderFile = new File("image/logo.jpg");
+        File orderFile = new File("/image/logo.jpg");
         Image orderImage= new Image(orderFile.toURI().toString());
+
+        orderImageView = new ImageView();
+
         orderImageView.setImage(orderImage);
 
 
