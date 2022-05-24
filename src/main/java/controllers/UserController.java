@@ -173,7 +173,37 @@ public class UserController implements Initializable {
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+public void orderTable(){
+        try {
 
+            corderTable.getItems().clear();
+            Connection con = ConnectionUtil.conDB();
+            ResultSet rs = con.createStatement().executeQuery("select * from orders");
+
+            while (rs.next()) {
+                orderList.add(new Order(
+
+                        rs.getString("Cname"),
+                        rs.getInt("quantity"),
+                        rs.getDouble("price"),
+                        rs.getString("address"),
+                        rs.getDate("date"),
+                        rs.getString("status"),
+                        rs.getString("productname")
+
+                ));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ccprice.setCellValueFactory(new PropertyValueFactory<Order, Double>("price"));
+        cquantity.setCellValueFactory(new PropertyValueFactory<Order, Integer>("quantity"));
+        caddress.setCellValueFactory(new PropertyValueFactory<Order, String>("address"));
+        cdate.setCellValueFactory(new PropertyValueFactory<Order, LocalDate>("date"));
+        status.setCellValueFactory(new PropertyValueFactory<Order, String>("status"));
+        cproductname.setCellValueFactory(new PropertyValueFactory<Order, String>("productname"));
+        corderTable.setItems(orderList);
+    }
 
     public void setData(){
 
