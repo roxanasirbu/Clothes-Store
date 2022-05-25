@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="259.0" prefWidth="265.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ManageProductController">
-    <children>
+   <children>
         <Label layoutX="14.0" layoutY="40.0" text="Product Name">
             <font>
                 <Font name="Comic Sans MS Bold" size="12.0" />
