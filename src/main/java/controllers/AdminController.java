@@ -1,4 +1,5 @@
 package controllers;
+
 import app.MainApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,9 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.*;
 import manager.ConnectionUtil;
-import model.Order;
-import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,8 +22,6 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
 
 public class AdminController implements Initializable {
 
@@ -132,6 +130,7 @@ public class AdminController implements Initializable {
 
 
 
+
     @FXML
     void AcceptOrder(ActionEvent event) {
         ConnectionUtil connectNow = new ConnectionUtil();
@@ -150,6 +149,7 @@ public class AdminController implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML
     void AddProduct(ActionEvent event) {
         int index = productTable.getSelectionModel().selectedIndexProperty().get();
@@ -176,13 +176,15 @@ public class AdminController implements Initializable {
             productsTable();
         }
     }
+
+
     @FXML
     void Logout(ActionEvent event) {
         main.mainWindow();
     }
-
     @FXML
     void DeleteProduct(ActionEvent event) {
+
         ConnectionUtil connectNow = new ConnectionUtil();
         Connection connectDb = connectNow.conDB();
         int index = productTable.getSelectionModel().selectedIndexProperty().get();
@@ -206,11 +208,12 @@ public class AdminController implements Initializable {
         productsTable();
 
     }
-    @FXML 
+
+    @FXML
     void EditProduct(ActionEvent event) {
         int index = productTable.getSelectionModel().selectedIndexProperty().get();
         try {
-            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("/viex/UpdateProductView.fxml"));
+            FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("/view/UpdateProductView.fxml"));
             AnchorPane pane;
             pane = loader.load();
             ManageProductController controller = loader.getController();
@@ -226,6 +229,8 @@ public class AdminController implements Initializable {
         finally {
             productsTable();
         }
+
+
     }
 
 
@@ -318,10 +323,8 @@ public class AdminController implements Initializable {
 
     void productsTable(){
 
-        productTable.setItems(null);
+        productTable.getItems().clear();
         try {
-
-
             Connection con = ConnectionUtil.conDB();
             ResultSet rs = con.createStatement().executeQuery("select * from products");
 
@@ -337,10 +340,13 @@ public class AdminController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
         cname.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         cprice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
         csize.setCellValueFactory(new PropertyValueFactory<Product, Integer>("size"));
         cdesc.setCellValueFactory(new PropertyValueFactory<Product, String>("desc"));
+
         productTable.setItems(productList);
     }
     @Override
@@ -351,5 +357,7 @@ public class AdminController implements Initializable {
         userInfo();
     }
 
-}
 
+
+
+}
