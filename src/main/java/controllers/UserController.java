@@ -110,7 +110,7 @@ public class UserController implements Initializable {
     String email;
     @FXML
     void BuyProduct(ActionEvent event) {
-        Object index = corderTable.getSelectionModel().getSelectedItems().get(0);
+        //Object index = corderTable.getSelectionModel().getSelectedItems().get(0);
 
         try {
             FXMLLoader loader= new FXMLLoader(MainApplication.class.getResource("/view/AddOrderView.fxml"));
