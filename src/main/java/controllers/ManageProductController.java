@@ -63,8 +63,8 @@ public class ManageProductController {
             Connection connectDb = connectNow.conDB();
             PreparedStatement stmt = connectDb.prepareStatement("UPDATE products SET name = ? , size = ? , price = ? , description = ?  Where idproducts = '" +(index+1)+"'");
             stmt.setString(1, txtUpdateProductName.getText());
-            stmt.setString(2, txtUpdateProductPrice.getText());
-            stmt.setString(3, txtUpdateProductSize.getText());
+            stmt.setString(2, txtUpdateProductSize.getText());
+            stmt.setString(3, txtUpdateProductPrice.getText());
             stmt.setString(4, txtUpdateProductDescription.getText());
 
             stmt.executeUpdate();
